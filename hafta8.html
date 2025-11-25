@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hafta 8 - Araba Temalı Rastgele Galeri</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: "Segoe UI", sans-serif;
+            background-color: #0e0e11;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #4a9eff;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .car-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .car {
+            text-align: center;
+        }
+
+        .car img {
+            width: 320px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            margin-bottom: 15px;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .buttons button {
+            background-color: #4a9eff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .buttons button:hover {
+            background-color: #2576d6;
+            transform: scale(1.05);
+        }
+
+        .controls {
+            margin-top: 40px;
+        }
+
+        .controls button {
+            background-color: #4a9eff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .controls button:hover {
+            background-color: #2576d6;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🚘 Hafta 8 - Araba Temalı Rastgele Galeri</h1>
+    <p>Her tıklamada 3 farklı araba rastgele değişir.</p>
+
+    <div class="car-container">
+        <div class="car">
+            <img id="car1" src="" alt="Araba 1">
+            <div class="buttons">
+                <button onclick="showCar('car1')">Göster</button>
+                <button onclick="hideCar('car1')">Gizle</button>
+            </div>
+        </div>
+
+        <div class="car">
+            <img id="car2" src="" alt="Araba 2">
+            <div class="buttons">
+                <button onclick="showCar('car2')">Göster</button>
+                <button onclick="hideCar('car2')">Gizle</button>
+            </div>
+        </div>
+
+        <div class="car">
+            <img id="car3" src="" alt="Araba 3">
+            <div class="buttons">
+                <button onclick="showCar('car3')">Göster</button>
+                <button onclick="hideCar('car3')">Gizle</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="changeCars()">🔁 Rastgele Çevir</button>
+    </div>
+
+    <script>
+        const carImages = [
+            "https://unsplash.com/photos/8nImtVvgM8c/download?force=true&w=800",
+            "https://unsplash.com/photos/J2qYq1Eirzc/download?force=true&w=800",
+            "https://unsplash.com/photos/JZcMutKjFjs/download?force=true&w=800",
+            "https://unsplash.com/photos/u0SvvBR_jlw/download?force=true&w=800",
+            "https://unsplash.com/photos/9Qp_oQiwcPY/download?force=true&w=800",
+            "https://unsplash.com/photos/SQS6EllkTnk/download?force=true&w=800",
+            "https://unsplash.com/photos/cLCgQPKui0M/download?force=true&w=800",
+            "https://unsplash.com/photos/IP-xOCpJVwA/download?force=true&w=800",
+            "https://unsplash.com/photos/cygUVWxEd5c/download?force=true&w=800",
+            "https://unsplash.com/photos/CM5_ZnVQJwc/download?force=true&w=800"
+        ];
+
+        function changeCars() {
+            const usedIndexes = new Set();
+            while (usedIndexes.size < 3) {
+                usedIndexes.add(Math.floor(Math.random() * carImages.length));
+            }
+
+            const [i1, i2, i3] = Array.from(usedIndexes);
+            document.getElementById("car1").src = carImages[i1];
+            document.getElementById("car2").src = carImages[i2];
+            document.getElementById("car3").src = carImages[i3];
+
+            // hepsi görünür hale gelsin
+            ["car1", "car2", "car3"].forEach(id => {
+                const img = document.getElementById(id);
+                img.style.visibility = "visible";
+                img.style.opacity = "1";
+            });
+        }
+
+        function hideCar(id) {
+            const img = document.getElementById(id);
+            img.style.opacity = "0";
+            setTimeout(() => { img.style.visibility = "hidden"; }, 400);
+        }
+
+        function showCar(id) {
+            const img = document.getElementById(id);
+            img.style.visibility = "visible";
+            img.style.opacity = "1";
+        }
+
+        window.onload = changeCars;
+    </script>
+</body>
+
+</html>
