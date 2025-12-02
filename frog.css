@@ -1,0 +1,141 @@
+/* === GENEL TASARIM === */
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    background: linear-gradient(120deg, #a8f1b8, #8ce0ff, #a4fba6);
+    background-size: 400% 400%;
+    animation: bgShift 12s ease infinite;
+}
+
+@keyframes bgShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+h1 {
+    color: #054f1b;
+    margin-top: 25px;
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#score {
+    color: #083a0f;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+/* === OYUN ALANI === */
+#board {
+    border: 3px solid #055c25;
+    border-radius: 12px;
+    background: radial-gradient(circle at center, #a9f7aa, #83e389);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25), inset 0 0 20px rgba(0, 0, 0, 0.15);
+    transition: background 0.4s ease;
+}
+
+/* === BUTON === */
+#restartBtn {
+    margin-top: 18px;
+    background: linear-gradient(135deg, #1dbf4e, #0e8c2b);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0;
+    display: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+#restartBtn.show {
+    display: inline-block;
+    opacity: 1;
+}
+
+#restartBtn:hover {
+    transform: scale(1.06);
+    background: linear-gradient(135deg, #17a544, #0d7625);
+}
+
+/* === KAZANMA ANİMASYONLARI === */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 10px #fff, 0 0 25px #34d45a, 0 0 40px #1dbf4e;
+    }
+
+    50% {
+        text-shadow: 0 0 20px #fff, 0 0 50px #32e04f, 0 0 80px #00ff87;
+    }
+}
+
+@keyframes bgFlow {
+    0% {
+        background: linear-gradient(120deg, #34d45a, #17a644, #6bf58a);
+    }
+
+    50% {
+        background: linear-gradient(120deg, #1dbf4e, #0dcaf0, #a1ffce);
+    }
+
+    100% {
+        background: linear-gradient(120deg, #34d45a, #17a644, #6bf58a);
+    }
+}
+
+.win-screen {
+    animation: bgFlow 5s linear infinite;
+}
+
+.win-text {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+#howToPlay {
+    position: absolute;
+    top: 225px;
+    left: 75px;
+    width: 230px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    color: #034d1e;
+    z-index: 10;
+    line-height: 1.7;
+    transition: all 0.3s ease;
+}
+
+#howToPlay h2 {
+    text-align: center;
+    color: #056a2b;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#howToPlay p {
+    margin: 6px 0;
+    font-size: 15px;
+}
